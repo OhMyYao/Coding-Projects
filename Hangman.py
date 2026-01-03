@@ -18,7 +18,7 @@ def hangman():
     while attempts > 0:
         print('\nCurrent word: ' + ''.join(guess_word))
         if len(guessed_letters) > 0:
-            print(f'Incorrect letters: {guessed_letters}')
+            print('Incorrect letters: ' + ''.join(guessed_letters))
         guess = input('Guess a letter: ').upper().strip()
 
         #check if input is a single letter
@@ -29,7 +29,7 @@ def hangman():
         #check if already guessed letter
         if (guess in guessed_letters) or (guess in guess_word):
             print('You already guessed that letter')
-            continue        
+            continue
 
         #check if guess is correct
         if guess in word:
