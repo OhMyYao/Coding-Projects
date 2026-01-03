@@ -12,16 +12,27 @@ def hangman():
 
     while attempts > 0:
         print('\nCurrent word: ' + ''.join(guess_word))
-        guess = input('Guess a letter: ').upper()
+        guess = input('Guess a letter: ').upper().strip()
 
+        #check if input is a single letter
+        if len(guess) != 1 or not guess.isalpha():
+            print('Please enter a single letter.\n')
+            continue
+
+        #check if already guessed letter
+        if guess in guess_word:
+            print('You already guessed that letter')
+            continue        
+
+        #check if guess is correct
         if guess in word:
             for i in range(len(word)):
                 if word[i] == guess:
-                    guess_word[i] == guess
+                    guess_word[i] = guess
                     print('Good Guess!\n')
-                else:
-                    attempts -= 1
-                    print(f'Wrong Guess. {str(attempts)} attempts left.\n')
+        else:
+            attempts -= 1
+            print(f'Wrong Guess. {attempts} attempts left.\n')
 
         if '_' not in guess_word:
             print(f'Congratulations! You guessed the word {word}\n')
