@@ -40,7 +40,7 @@ def hangman():
             for i in range(len(word)):
                 if word[i] == guess:
                     guess_word[i] = guess
-            print('Good Guess!\n')
+            print('Good Guess!')
         else:
             attempts -= 1
             guessed_letters.append(guess)
