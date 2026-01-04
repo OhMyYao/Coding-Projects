@@ -1,7 +1,13 @@
 import random
 
-#import a word list file or use the premade list
-word_list = ['APPLE', 'BEACH', 'CROWD', 'DINGO', 'EATEN', 'FEAST', 'GRAPE', 'HEART', 'ITALY', 'JOLLY', 'KAYAK', 'KNIFE', 'LEMON', 'MANGO', 'NOTED', 'OPINE', 'OLIVE', 'PARTY','QUEUE', 'RATED', 'SHAME', 'TOUCH', 'UNCLE', 'VOICE', 'WATCH', 'XENON', 'YACHT','ZEBRA']
+word_list = []
+#import a word list file or use the premade list. Make sure each word is in a new line
+try:
+    with open('word.txt', 'r') as f:
+        for line in f:
+            word_list.append(line.strip())
+except FileNotFoundError:
+    word_list = ['APPLE', 'BEACH', 'CROWD', 'DINGO', 'EATEN', 'FEAST', 'GRAPE', 'HEART', 'ITALY', 'JOLLY', 'KAYAK', 'KNIFE', 'LEMON', 'MANGO', 'NOTED', 'OPINE', 'OLIVE', 'PARTY','QUEUE', 'RATED', 'SHAME', 'TOUCH', 'UNCLE', 'VOICE', 'WATCH', 'XENON', 'YACHT','ZEBRA']
 
 
 def hangman():
@@ -14,9 +20,9 @@ def hangman():
     guessed_letters = []
 
     while attempts > 0:
-        print('\nCurrent word: ' + ''.join(guess_word))
+        print('Current word: ' + ''.join(guess_word))
         if len(guessed_letters) > 0:
-            print('Incorrect letters: ' + ''.join(guessed_letters))
+            print('Incorrect letters: ' + ''.join(guessed_letters) +'\n')
         guess = input('Guess a letter: ').upper().strip()
 
         #check if input is a single letter
@@ -34,11 +40,11 @@ def hangman():
             for i in range(len(word)):
                 if word[i] == guess:
                     guess_word[i] = guess
-                    print('Good Guess!\n')
+            print('Good Guess!\n')
         else:
             attempts -= 1
             guessed_letters.append(guess)
-            print(f'Wrong Guess. {attempts} attempts left.\n')
+            print(f'\nWrong Guess. {attempts} attempts left.')
 
         #check if word is complete or if attempts have run out
         if '_' not in guess_word:
