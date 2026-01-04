@@ -1,8 +1,6 @@
-import os
 import random
 
-#import a word list file named 'word.txt' or use the premade list
-
+#import a word list file or use the premade list
 word_list = ['APPLE', 'BEACH', 'CROWD', 'DINGO', 'EATEN', 'FEAST', 'GRAPE', 'HEART', 'ITALY', 'JOLLY', 'KAYAK', 'KNIFE', 'LEMON', 'MANGO', 'NOTED', 'OPINE', 'OLIVE', 'PARTY','QUEUE', 'RATED', 'SHAME', 'TOUCH', 'UNCLE', 'VOICE', 'WATCH', 'XENON', 'YACHT','ZEBRA']
 
 
@@ -49,4 +47,5 @@ def hangman():
         elif attempts == 0:
             print(f'Sorry you lose! The word was: {word}\n')
 
-hangman()
+if __name__ == '__main__':
+    hangman()
